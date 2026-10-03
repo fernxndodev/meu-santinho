@@ -657,7 +657,7 @@ function StateSelectionScreen({ onSelect }: StateSelectionScreenProps) {
           <span className="state-step">Primeiro passo</span>
 
           <h1 id="state-title">
-            Onde você
+            Onde você{" "}
             <br />
             <span>vota?</span>
           </h1>
