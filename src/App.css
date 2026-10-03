@@ -3440,3 +3440,644 @@ body:has(.review-screen) .development-label {
 .completed-heading p {
   color: rgba(255, 255, 255, 0.65);
 }
+
+/* =========================================================
+   Meu Santinho — Mobile App Layout
+   ========================================================= */
+
+@media (max-width: 540px) {
+  .app-shell {
+    width: calc(100% - 20px);
+    min-height: 100dvh;
+  }
+
+  /* Header global mínimo */
+  .site-header {
+    min-height: 42px;
+    gap: 8px;
+  }
+
+  .site-header .brand {
+    font-size: .82rem;
+  }
+
+  .development-label {
+    padding: 3px 6px;
+    font-size: .55rem;
+  }
+
+  /* Não repetir aviso em todas as etapas */
+  .privacy-note {
+    display: none;
+  }
+
+  .storage-feedback {
+    min-height: 0;
+    margin: 0;
+    font-size: .6rem;
+  }
+
+  /* ==========================
+     ESTADO
+     ========================== */
+
+  .state-selection-v2 {
+    padding-top: 8px;
+  }
+
+  .state-brand {
+    display: none;
+  }
+
+  .state-heading {
+    margin-top: 0;
+  }
+
+  .state-step {
+    font-size: .56rem;
+  }
+
+  .state-heading h1 {
+    margin: 4px 0;
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  .state-heading h1 br {
+    display: none;
+  }
+
+  .state-heading p {
+    margin: 0;
+    font-size: .65rem;
+    line-height: 1.25;
+  }
+
+  .state-hero {
+    margin-bottom: 8px;
+  }
+
+  .state-glass-panel {
+    padding: 9px;
+    border-radius: 17px;
+  }
+
+  .state-search {
+    min-height: 40px;
+  }
+
+  .state-list-header {
+    margin: 7px 2px 5px;
+    font-size: .55rem;
+  }
+
+  .state-grid-v2 {
+    max-height: calc(100dvh - 230px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .state-option-v2 {
+    min-height: 42px;
+  }
+
+  .state-privacy {
+    margin-top: 6px;
+    font-size: .52rem;
+  }
+
+  /* ==========================
+     CANDIDATOS
+     ========================== */
+
+  .candidate-selection-v2 {
+    padding-top: 7px;
+  }
+
+  .candidate-topbar {
+    margin-bottom: 5px;
+  }
+
+  .candidate-back {
+    width: 34px;
+    height: 34px;
+  }
+
+  .candidate-location {
+    font-size: .58rem;
+  }
+
+  .candidate-progress-v2 {
+    margin: 5px 0 8px;
+  }
+
+  .candidate-progress-meta {
+    margin-bottom: 3px;
+    font-size: .54rem;
+  }
+
+  .candidate-progress-track {
+    height: 3px;
+  }
+
+  /*
+   * No mobile o próprio topbar já informa a etapa.
+   * Eliminamos o grande bloco introdutório.
+   */
+  .candidate-intro-v2 {
+    margin: 5px 0 7px;
+  }
+
+  .candidate-stage-kicker,
+  .candidate-intro-v2 p,
+  .candidate-motivation {
+    display: none;
+  }
+
+  .candidate-intro-v2 h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.05;
+  }
+
+  .candidate-intro-v2 h1 br {
+    display: none;
+  }
+
+  .candidate-intro-v2 h1 span {
+    display: inline;
+    margin-left: .3em;
+  }
+
+  .candidate-search-panel {
+    margin-top: 0;
+    padding: 7px;
+    border-radius: 15px;
+  }
+
+  .candidate-search-v2 {
+    min-height: 41px;
+  }
+
+  .candidate-search-v2 input {
+    min-height: 39px;
+    font-size: .78rem;
+  }
+
+  .candidate-search-empty {
+    min-height: 135px;
+    padding: 14px 8px;
+  }
+
+  .candidate-search-illustration {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 7px;
+  }
+
+  .candidate-search-empty strong {
+    font-size: .76rem;
+  }
+
+  .candidate-search-empty p {
+    margin-top: 3px;
+    font-size: .58rem;
+  }
+
+  /* Só a lista extensa precisa rolar */
+  .candidate-list-v2 {
+    max-height: calc(100dvh - 255px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/* =========================================================
+   SANTINHO FINAL — MOBILE / SCREENSHOT
+   ========================================================= */
+
+@media (max-width: 540px) {
+
+  .completed-v2 {
+    width: 100%;
+    padding: 6px 0 18px;
+  }
+
+  /* Cabeçalho externo não precisa ocupar espaço no print */
+  .completed-heading {
+    margin: 0 0 5px;
+  }
+
+  .completed-heading .completed-badge {
+    display: none;
+  }
+
+  .completed-heading h1 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  .completed-heading p {
+    margin: 2px 0 0;
+    font-size: .52rem;
+  }
+
+  /* O cartão */
+  .digital-ballot {
+    width: 100%;
+    padding: 8px 9px 7px;
+    border-radius: 16px;
+  }
+
+  .digital-ballot-header {
+    min-height: 28px;
+  }
+
+  .digital-ballot-brand {
+    gap: 6px;
+  }
+
+  .digital-ballot-logo {
+    width: 27px;
+    height: 27px;
+    border-radius: 8px;
+    font-size: .52rem;
+  }
+
+  .digital-ballot-brand strong {
+    font-size: .63rem;
+    line-height: 1;
+  }
+
+  .digital-ballot-brand div span {
+    display: none;
+  }
+
+  .digital-ballot-uf {
+    min-width: 30px;
+    height: 21px;
+    padding: 0 6px;
+    font-size: .48rem;
+  }
+
+  .digital-ballot-divider {
+    margin: 5px 0 1px;
+  }
+
+  /*
+   * Uma candidatura = uma linha.
+   * Cargo | número | nome/partido
+   */
+  .digital-ballot-choice {
+    display: grid;
+    grid-template-columns: 64px auto minmax(0, 1fr);
+    grid-template-areas:
+      "office digits name"
+      "office digits party";
+
+    align-items: center;
+    column-gap: 5px;
+    row-gap: 0;
+
+    min-height: 40px;
+    padding: 2px 0;
+    text-align: left;
+  }
+
+  .digital-ballot-office {
+    grid-area: office;
+    margin: 0;
+
+    font-size: .42rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: .025em;
+  }
+
+  .digital-ballot-digits {
+    grid-area: digits;
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 2px;
+  }
+
+  .digital-ballot-digit {
+    width: 19px;
+    height: 25px;
+
+    border-radius: 5px;
+
+    font-size: .78rem;
+    line-height: 1;
+  }
+
+  .digital-ballot-name {
+    grid-area: name;
+
+    align-self: end;
+
+    max-width: 100%;
+    margin: 0;
+
+    overflow: hidden;
+
+    font-size: .52rem;
+    font-weight: 800;
+    line-height: 1.05;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .digital-ballot-party {
+    grid-area: party;
+
+    align-self: start;
+
+    margin: 1px 0 0;
+
+    font-size: .42rem;
+    line-height: 1;
+  }
+
+  /* Mensagem institucional vira um pequeno rodapé */
+  .digital-ballot-message {
+    margin-top: 3px;
+    padding: 5px 6px;
+    border-radius: 8px;
+  }
+
+  .digital-ballot-message > strong {
+    font-size: .47rem;
+    line-height: 1;
+  }
+
+  .digital-ballot-message p {
+    margin: 2px 0 0;
+    font-size: .42rem;
+    line-height: 1.15;
+  }
+
+  .digital-ballot-footer {
+    gap: 4px;
+    padding-top: 4px;
+
+    font-size: .39rem;
+    line-height: 1;
+  }
+
+  /*
+   * Esses controles não fazem parte do santinho.
+   * Continuam abaixo para o usuário poder editar.
+   */
+  .completed-saved {
+    margin: 6px 0 0;
+    font-size: .5rem;
+  }
+
+  .completed-actions {
+    gap: 6px;
+    margin-top: 7px;
+  }
+
+  .completed-actions button {
+    min-height: 38px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: .68rem;
+  }
+
+  .completed-v2 > .clear-ballot {
+    margin-top: 6px;
+  }
+}
+
+
+/* iPhones/telas mais baixas */
+@media (max-width: 540px) and (max-height: 760px) {
+
+  .completed-heading {
+    display: none;
+  }
+
+  .digital-ballot-choice {
+    min-height: 36px;
+  }
+
+  .digital-ballot-digit {
+    width: 18px;
+    height: 23px;
+    font-size: .72rem;
+  }
+
+  .digital-ballot-message p {
+    display: none;
+  }
+}
+
+
+/* Centraliza nome e partido no santinho final */
+@media (max-width: 540px) {
+  .digital-ballot-name,
+  .digital-ballot-party {
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+  }
+}
+
+
+/* Alinhamento definitivo das linhas do santinho */
+@media (max-width: 540px) {
+  .digital-ballot-choice {
+    grid-template-columns: 72px 1fr 110px;
+    grid-template-areas:
+      "office digits name"
+      "office digits party";
+  }
+
+  .digital-ballot-office {
+    grid-area: office;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .digital-ballot-digits {
+    grid-area: digits;
+    justify-self: center;
+  }
+
+  .digital-ballot-name {
+    grid-area: name;
+    width: 110px;
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+  }
+
+  .digital-ballot-party {
+    grid-area: party;
+    width: 110px;
+    justify-self: center;
+    align-self: start;
+    text-align: center;
+  }
+}
+
+
+/* Logo principal */
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 48px;
+  max-width: 180px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (max-width: 540px) {
+  .brand-logo {
+    height: 38px;
+    max-width: 145px;
+  }
+}
+
+
+/* Logo maior no cabeçalho */
+.brand-logo {
+  height: 64px;
+  max-width: 240px;
+}
+
+@media (max-width: 540px) {
+  .brand-logo {
+    height: 58px;
+    max-width: 210px;
+  }
+
+  .site-header {
+    min-height: 66px;
+  }
+}
+
+
+/* Aproxima o conteúdo do cabeçalho no mobile */
+@media (max-width: 540px) {
+  .site-header {
+    min-height: 62px;
+  }
+
+  .brand-logo {
+    height: 56px;
+    max-width: 205px;
+  }
+
+  .candidate-selection-v2 {
+    padding-top: 4px;
+  }
+
+  .candidate-topbar {
+    margin-top: 0;
+    margin-bottom: 6px;
+  }
+}
+
+
+@media (max-width: 540px) {
+  .privacy-note,
+  .storage-feedback {
+    display: none;
+  }
+}
+
+
+/* Identidade visual do topo */
+.election-header-title {
+  width: 100%;
+  color: rgba(248, 251, 255, .72);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-align: center;
+}
+
+.state-brand-logo {
+  display: block;
+  width: auto;
+  height: 82px;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+@media (max-width: 540px) {
+  .site-header {
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  .state-brand {
+    display: flex;
+    align-items: center;
+    min-height: 0;
+  }
+
+  .state-brand-logo {
+    height: 72px;
+    max-width: 190px;
+  }
+}
+
+
+/* Destaque do título Eleições 2026 */
+.election-header-title {
+  font-size: 1rem;
+  font-weight: 850;
+  letter-spacing: .14em;
+}
+
+@media (max-width: 540px) {
+  .election-header-title {
+    font-size: .95rem;
+  }
+
+  .site-header {
+    min-height: 48px;
+  }
+}
+
+
+/* Logo Meu Santinho maior */
+.state-brand-logo {
+  height: 120px;
+  max-width: 300px;
+}
+
+@media (max-width: 540px) {
+  .state-brand-logo {
+    height: 80px;
+    max-width: 260px;
+  }
+}
+
+
+/* Logo oficial no santinho final */
+.digital-ballot-logo-image {
+  display: block;
+  width: 140px;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 540px) {
+  .digital-ballot-logo-image {
+    width: 120px;
+    height: auto;
+    max-width: none;
+  }
+}

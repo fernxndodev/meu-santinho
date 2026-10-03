@@ -646,14 +646,11 @@ function StateSelectionScreen({ onSelect }: StateSelectionScreenProps) {
     <section className="state-selection-v2" aria-labelledby="state-title">
       <div className="state-hero">
         <div className="state-brand">
-          <span className="state-brand-mark" aria-hidden="true">
-            MS
-          </span>
-
-          <div>
-            <strong>Meu Santinho</strong>
-            <span>Eleições 2026</span>
-          </div>
+          <img
+            className="state-brand-logo"
+            src="/brand/logo-meu-santinho.png"
+            alt="Meu Santinho"
+          />
         </div>
 
         <div className="state-heading">
@@ -734,8 +731,7 @@ function StateSelectionScreen({ onSelect }: StateSelectionScreenProps) {
 function AppHeader() {
   return (
     <header className="site-header">
-      <span className="brand">Meu Santinho</span>
-      <span className="development-label">Demonstração</span>
+      <span className="election-header-title">ELEIÇÕES 2026</span>
     </header>
   )
 }
@@ -966,14 +962,11 @@ function CompletedBallot({
       <article className="digital-ballot">
         <header className="digital-ballot-header">
           <div className="digital-ballot-brand">
-            <span className="digital-ballot-logo" aria-hidden="true">
-              MS
-            </span>
-
-            <div>
-              <strong>Meu Santinho</strong>
-              <span>Sua cola eleitoral</span>
-            </div>
+            <img
+              className="digital-ballot-logo-image"
+              src="/brand/logo-meu-santinho.png"
+              alt="Meu Santinho"
+            />
           </div>
 
           <span className="digital-ballot-uf">{uf}</span>
