@@ -1,0 +1,470 @@
+{
+  "dataset": "Candidatos - 2026",
+  "datasetUrl": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
+  "license": "Creative Commons Atribuição",
+  "generatedAt": "2026-10-03T17:43:11.488Z",
+  "candidateSource": {
+    "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
+    "sha256": "967d083526730cd8776bc4ee2c62d997551686ce1716b202cf068e61708cf6c9"
+  },
+  "ufs": [
+    "AC",
+    "AL",
+    "AP",
+    "AM",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MT",
+    "MS",
+    "MG",
+    "PA",
+    "PB",
+    "PR",
+    "PE",
+    "PI",
+    "RJ",
+    "RN",
+    "RS",
+    "RO",
+    "RR",
+    "SC",
+    "SP",
+    "SE",
+    "TO"
+  ],
+  "summary": {
+    "AC": {
+      "total": 363,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 102,
+        "GOVERNOR": 6,
+        "SENATOR": 8,
+        "STATE_DEPUTY": 247
+      },
+      "extractedPhotos": 363,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AC_div.zip",
+        "sha256": "4fd6db98a8bb17ee40802f0d8d4d8521c3044298e430dbc5581a23bf0a952196"
+      }
+    },
+    "AL": {
+      "total": 273,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 118,
+        "GOVERNOR": 4,
+        "SENATOR": 7,
+        "STATE_DEPUTY": 144
+      },
+      "extractedPhotos": 273,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AL_div.zip",
+        "sha256": "d738943baf07b48cc0a17737feee931f01e10d196ec38e761d67577b7fdfb013"
+      }
+    },
+    "AP": {
+      "total": 299,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 91,
+        "GOVERNOR": 5,
+        "SENATOR": 9,
+        "STATE_DEPUTY": 194
+      },
+      "extractedPhotos": 299,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AP_div.zip",
+        "sha256": "3d572bffc28cd4ace3b19929f3c406240285e7e5d960a73ab0cf42d8ebf08928"
+      }
+    },
+    "AM": {
+      "total": 449,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 139,
+        "GOVERNOR": 7,
+        "SENATOR": 9,
+        "STATE_DEPUTY": 294
+      },
+      "extractedPhotos": 449,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AM_div.zip",
+        "sha256": "1678a6ebe473921c08bb81c80ddd34a8aa9cda64afc3a61d650ef7c8d5ba85c1"
+      }
+    },
+    "BA": {
+      "total": 1195,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 535,
+        "GOVERNOR": 7,
+        "SENATOR": 10,
+        "STATE_DEPUTY": 643
+      },
+      "extractedPhotos": 1195,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BA_div.zip",
+        "sha256": "7c9d9c65708e2eaf574a197d3fbc66ac4aa840d77c20365940496b560ac7bd34"
+      }
+    },
+    "CE": {
+      "total": 688,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 295,
+        "GOVERNOR": 9,
+        "SENATOR": 8,
+        "STATE_DEPUTY": 376
+      },
+      "extractedPhotos": 688,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_CE_div.zip",
+        "sha256": "038b3b36ccef31a2bd14ff96973f85928ffb4dfdb5f3397341e1929f9955a73f"
+      }
+    },
+    "DF": {
+      "total": 629,
+      "candidateCounts": {
+        "DISTRICT_DEPUTY": 433,
+        "FEDERAL_DEPUTY": 172,
+        "GOVERNOR": 11,
+        "SENATOR": 13
+      },
+      "extractedPhotos": 629,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_DF_div.zip",
+        "sha256": "15d39d5d164b63da1ed2d153ecad34136edaaafe288e1c6ac18285200e534dd9"
+      }
+    },
+    "ES": {
+      "total": 563,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 137,
+        "GOVERNOR": 5,
+        "SENATOR": 11,
+        "STATE_DEPUTY": 410
+      },
+      "extractedPhotos": 563,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_ES_div.zip",
+        "sha256": "c9bbf07f5a95d0e69bfef1e901d2dd577ab49dd2e86c16f1bdacd237359caa15"
+      }
+    },
+    "GO": {
+      "total": 877,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 265,
+        "GOVERNOR": 6,
+        "SENATOR": 11,
+        "STATE_DEPUTY": 595
+      },
+      "extractedPhotos": 877,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_GO_div.zip",
+        "sha256": "2e68e530f84b1d68586af56f619b2c51828088ce3e7ce9cd8e82e8b8a5ee9c79"
+      }
+    },
+    "MA": {
+      "total": 586,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 282,
+        "GOVERNOR": 8,
+        "SENATOR": 11,
+        "STATE_DEPUTY": 285
+      },
+      "extractedPhotos": 586,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MA_div.zip",
+        "sha256": "521da332b452e8651b112cd24cfa0fd153d2b4cce8850a9b08ea81c8ed5cd3a7"
+      }
+    },
+    "MT": {
+      "total": 423,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 138,
+        "GOVERNOR": 7,
+        "SENATOR": 10,
+        "STATE_DEPUTY": 268
+      },
+      "extractedPhotos": 423,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MT_div.zip",
+        "sha256": "22b00c795a9fdca4b5afdcdb3715fabb3b1ba0f7666684988f8c3d67d22ed331"
+      }
+    },
+    "MS": {
+      "total": 395,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 124,
+        "GOVERNOR": 8,
+        "SENATOR": 10,
+        "STATE_DEPUTY": 253
+      },
+      "extractedPhotos": 395,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MS_div.zip",
+        "sha256": "8022eb9b39085639cd3f114052fbf5ff6adbd7e2fb0ffb7b5f20c1d358044c29"
+      }
+    },
+    "MG": {
+      "total": 1783,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 756,
+        "GOVERNOR": 11,
+        "SENATOR": 18,
+        "STATE_DEPUTY": 998
+      },
+      "extractedPhotos": 1782,
+      "missingPhotos": [
+        {
+          "id": "130002553354",
+          "office": "SENATOR",
+          "ballotName": "GUSTAVO GALASSI",
+          "expectedFilename": "FMG130002553354_div.jpg"
+        }
+      ],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MG_div.zip",
+        "sha256": "daea199339aa64ca75beaeee3d9e19d8cd5882c9732329f01eef3a36655fd37f"
+      }
+    },
+    "PA": {
+      "total": 706,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 268,
+        "GOVERNOR": 8,
+        "SENATOR": 13,
+        "STATE_DEPUTY": 417
+      },
+      "extractedPhotos": 706,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PA_div.zip",
+        "sha256": "103dbd10fcc4dbb25122f93887978c3d092dbc40fc2bceb3d8b038e21966b35d"
+      }
+    },
+    "PB": {
+      "total": 419,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 190,
+        "GOVERNOR": 6,
+        "SENATOR": 10,
+        "STATE_DEPUTY": 213
+      },
+      "extractedPhotos": 419,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PB_div.zip",
+        "sha256": "5b44fc8f8cd8ac916a04d217c57ad581f360e38dcd2e41fba18f76db1dd45e64"
+      }
+    },
+    "PR": {
+      "total": 1062,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 428,
+        "GOVERNOR": 8,
+        "SENATOR": 9,
+        "STATE_DEPUTY": 617
+      },
+      "extractedPhotos": 1062,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PR_div.zip",
+        "sha256": "b31211755f03d451b9b29c9fa355619aa0e5e8025d5d66dbd6a117e8c9ce8743"
+      }
+    },
+    "PE": {
+      "total": 929,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 392,
+        "GOVERNOR": 8,
+        "SENATOR": 12,
+        "STATE_DEPUTY": 517
+      },
+      "extractedPhotos": 929,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PE_div.zip",
+        "sha256": "eeb4f02cb268647254d104c1bc936b4a483dadd38489b5cc67a5e124b4008f4c"
+      }
+    },
+    "PI": {
+      "total": 348,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 164,
+        "GOVERNOR": 11,
+        "SENATOR": 20,
+        "STATE_DEPUTY": 153
+      },
+      "extractedPhotos": 348,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PI_div.zip",
+        "sha256": "432fcd37932d5428f717882de3fb97e9d1ab4b7462f84364f8ca74d56947e02e"
+      }
+    },
+    "RJ": {
+      "total": 2007,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 793,
+        "GOVERNOR": 9,
+        "SENATOR": 17,
+        "STATE_DEPUTY": 1188
+      },
+      "extractedPhotos": 2007,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RJ_div.zip",
+        "sha256": "ac8db0e2a7466d12d3be315aecb01cd3bfa81b5b67c901a0d1f42990cbb8e810"
+      }
+    },
+    "RN": {
+      "total": 289,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 111,
+        "GOVERNOR": 10,
+        "SENATOR": 14,
+        "STATE_DEPUTY": 154
+      },
+      "extractedPhotos": 289,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RN_div.zip",
+        "sha256": "6dadb5bcd40658dfad1b6c90d8e6bcddae79bdf66fc7257a2f9b52747e6b3b44"
+      }
+    },
+    "RS": {
+      "total": 1021,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 459,
+        "GOVERNOR": 7,
+        "SENATOR": 13,
+        "STATE_DEPUTY": 542
+      },
+      "extractedPhotos": 1021,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RS_div.zip",
+        "sha256": "0577b19fe0b7e6f7e5551ca35efd057500854736725ac8fc169bb2c2c3cb8c37"
+      }
+    },
+    "RO": {
+      "total": 410,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 134,
+        "GOVERNOR": 6,
+        "SENATOR": 10,
+        "STATE_DEPUTY": 260
+      },
+      "extractedPhotos": 410,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RO_div.zip",
+        "sha256": "49fb79d85484f4596e9bff50a47bc174026ef07f3a752ca29e72acdf59cbcb4f"
+      }
+    },
+    "RR": {
+      "total": 376,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 108,
+        "GOVERNOR": 5,
+        "SENATOR": 13,
+        "STATE_DEPUTY": 250
+      },
+      "extractedPhotos": 376,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RR_div.zip",
+        "sha256": "aabf1194a44e46b90fd1d7196fddbb8bb9f5ef10bc3c4644a38d5b8cfd6e3238"
+      }
+    },
+    "SC": {
+      "total": 666,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 231,
+        "GOVERNOR": 8,
+        "SENATOR": 13,
+        "STATE_DEPUTY": 414
+      },
+      "extractedPhotos": 666,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SC_div.zip",
+        "sha256": "c47141d43cacadb112ac0ba42d769b52ea07ad3ed9068a93d8a8297480c2b313"
+      }
+    },
+    "SP": {
+      "total": 2586,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 1132,
+        "GOVERNOR": 7,
+        "SENATOR": 16,
+        "STATE_DEPUTY": 1431
+      },
+      "extractedPhotos": 2586,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SP_div.zip",
+        "sha256": "e7ec5a871a1e9e367ba67f43b48bed2dd11b762e59e998c5a8735be31bc9c94c"
+      }
+    },
+    "SE": {
+      "total": 380,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 141,
+        "GOVERNOR": 6,
+        "SENATOR": 11,
+        "STATE_DEPUTY": 222
+      },
+      "extractedPhotos": 380,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SE_div.zip",
+        "sha256": "14da8ae26c6dd2c5f4780508ed81f477e1d35828acd76173b92b23ad1f6679d4"
+      }
+    },
+    "TO": {
+      "total": 328,
+      "candidateCounts": {
+        "FEDERAL_DEPUTY": 98,
+        "GOVERNOR": 8,
+        "SENATOR": 13,
+        "STATE_DEPUTY": 209
+      },
+      "extractedPhotos": 328,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_TO_div.zip",
+        "sha256": "521d18fa1d3ac853043922b7028ac8994942d2382c66b36cdaa2d585cfd23eca"
+      }
+    },
+    "BR": {
+      "total": 14,
+      "candidateCounts": {
+        "PRESIDENT": 14
+      },
+      "extractedPhotos": 14,
+      "missingPhotos": [],
+      "photoSource": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BR_div.zip",
+        "sha256": "a747572d9ae084baadf2d099c8f40c3ff44434cc8117f4feaa8ef04b4bbd88fc"
+      }
+    }
+  },
+  "totals": {
+    "candidates": 20064,
+    "photos": 20063,
+    "missingPhotos": 1
+  }
+}

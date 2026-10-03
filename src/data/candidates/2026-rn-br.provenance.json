@@ -1,0 +1,37 @@
+{
+  "dataset": "Candidatos - 2026",
+  "datasetUrl": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
+  "license": "Creative Commons Atribuição",
+  "inputs": [
+    {
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
+      "sha256": "967d083526730cd8776bc4ee2c62d997551686ce1716b202cf068e61708cf6c9"
+    },
+    {
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RN_div.zip",
+      "sha256": "6dadb5bcd40658dfad1b6c90d8e6bcddae79bdf66fc7257a2f9b52747e6b3b44"
+    },
+    {
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BR_div.zip",
+      "sha256": "a747572d9ae084baadf2d099c8f40c3ff44434cc8117f4feaa8ef04b4bbd88fc"
+    }
+  ],
+  "candidateCounts": {
+    "FEDERAL_DEPUTY": 111,
+    "GOVERNOR": 10,
+    "PRESIDENT": 14,
+    "SENATOR": 14,
+    "STATE_DEPUTY": 154
+  },
+  "totalCandidates": 303,
+  "photoCount": 303,
+  "missingPhotos": [],
+  "candidacyStatusValues": {
+    "CD_SITUACAO_CANDIDATURA_DS_SITUACAO_CANDIDATURA": {
+      "-3 | #NE": 303
+    },
+    "CD_SIT_TOT_TURNO_DS_SIT_TOT_TURNO": {
+      "-1 | #NULO": 303
+    }
+  }
+}

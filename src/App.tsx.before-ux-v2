@@ -1,0 +1,777 @@
+import { useEffect, useMemo, useState } from 'react'
+import { getCandidates } from './features/candidates/candidateData'
+import { matchesCandidateQuery } from './features/candidates/candidateQuery'
+import { loadBallot, removeBallot, saveBallot } from './features/ballot/ballotStorage'
+import {
+  brazilianStates,
+  createElection2026Config,
+  createElectionStages,
+  officeLabels,
+  type BrazilianUf,
+  type ElectionStage,
+} from './features/elections/electionConfig'
+import {
+  loadSelectedUf,
+  removeSelectedUf,
+  saveSelectedUf,
+} from './features/elections/selectedUfStorage'
+import type { Candidate, CandidateOffice } from './features/candidates/types'
+import './App.css'
+
+type CandidateLoad = {
+  stageId: string
+  candidates: Candidate[]
+}
+
+type ChoiceGroup = {
+  office: CandidateOffice
+  label: string
+  stages: ElectionStage[]
+}
+
+type StorageMessage = 'idle' | 'saved' | 'restored' | 'cleared' | 'error'
+
+function groupStagesByOffice(stages: ElectionStage[]): ChoiceGroup[] {
+  const groups: ChoiceGroup[] = []
+
+  for (const stage of stages) {
+    const existingGroup = groups.find((group) => group.office === stage.office)
+    if (existingGroup) {
+      existingGroup.stages.push(stage)
+    } else {
+      groups.push({
+        office: stage.office,
+        label: officeLabels[stage.office],
+        stages: [stage],
+      })
+    }
+  }
+
+  return groups
+}
+
+function App() {
+  const [selectedUf, setSelectedUf] = useState<BrazilianUf | null>(() =>
+    loadSelectedUf(),
+  )
+  const [currentStageIndex, setCurrentStageIndex] = useState(0)
+  const [selections, setSelections] = useState<Record<string, Candidate>>({})
+  const [candidateLoad, setCandidateLoad] = useState<CandidateLoad | null>(null)
+  const [isComplete, setIsComplete] = useState(false)
+  const [isRestoring, setIsRestoring] = useState(true)
+  const [storageMessage, setStorageMessage] = useState<StorageMessage>('idle')
+
+  const electionConfig = useMemo(
+    () => (selectedUf ? createElection2026Config(selectedUf) : null),
+    [selectedUf],
+  )
+
+  const electionStages = useMemo(
+    () => (electionConfig ? createElectionStages(electionConfig) : []),
+    [electionConfig],
+  )
+
+  const reviewGroups = useMemo(
+    () => groupStagesByOffice(electionStages),
+    [electionStages],
+  )
+
+  const electionContext = useMemo(
+    () =>
+      electionConfig
+        ? {
+            electionYear: electionConfig.electionYear,
+            uf: electionConfig.uf,
+          }
+        : null,
+    [electionConfig],
+  )
+
+  const currentStage = electionStages[currentStageIndex]
+
+  useEffect(() => {
+    if (!currentStage || !electionContext) return
+
+    let isActive = true
+
+    void getCandidates({
+      ...electionContext,
+      office: currentStage.office,
+    }).then((candidates) => {
+      if (isActive) {
+        setCandidateLoad({ stageId: currentStage.id, candidates })
+      }
+    })
+
+    return () => {
+      isActive = false
+    }
+  }, [currentStage, electionContext])
+
+  useEffect(() => {
+    if (!electionContext || electionStages.length === 0) return
+
+    let isActive = true
+    const context = electionContext
+
+    async function restoreSelections(): Promise<Record<string, Candidate>> {
+      const savedIds = loadBallot(
+        context,
+        electionStages.map((stage) => stage.id),
+      )
+      if (!savedIds) return {}
+
+      const candidateRequests = new Map<CandidateOffice, Promise<Candidate[]>>()
+      const resolvedSelections = await Promise.all(
+        electionStages.map(async (stage) => {
+          const candidateId = savedIds[stage.id]
+          if (!candidateId) return null
+
+          let candidatesRequest = candidateRequests.get(stage.office)
+          if (!candidatesRequest) {
+            candidatesRequest = getCandidates({
+              ...context,
+              office: stage.office,
+            })
+            candidateRequests.set(stage.office, candidatesRequest)
+          }
+
+          const candidates = await candidatesRequest
+          const candidate = candidates.find(
+            (item) =>
+              item.id === candidateId &&
+              matchesCandidateQuery(item, {
+                ...context,
+                office: stage.office,
+              }),
+          )
+          return candidate ? { stage, candidate } : null
+        }),
+      )
+
+      const restored: Record<string, Candidate> = {}
+      const senatorIds = new Set<string>()
+      for (const selection of resolvedSelections) {
+        if (!selection) continue
+        if (selection.stage.office === 'SENATOR') {
+          if (senatorIds.has(selection.candidate.id)) continue
+          senatorIds.add(selection.candidate.id)
+        }
+        restored[selection.stage.id] = selection.candidate
+      }
+      return restored
+    }
+
+    void restoreSelections()
+      .then((restored) => {
+        if (!isActive) return
+        setSelections(restored)
+        const firstIncompleteStage = electionStages.findIndex(
+          (stage) => !restored[stage.id],
+        )
+        if (firstIncompleteStage === -1) {
+          setCurrentStageIndex(electionStages.length)
+          setIsComplete(true)
+        } else {
+          setCurrentStageIndex(firstIncompleteStage)
+        }
+        if (Object.keys(restored).length > 0) setStorageMessage('restored')
+      })
+      .catch(() => {
+        if (isActive) setStorageMessage('error')
+      })
+      .finally(() => {
+        if (isActive) setIsRestoring(false)
+      })
+
+    return () => {
+      isActive = false
+    }
+  }, [electionContext, electionStages])
+
+  const loadedCandidates =
+    candidateLoad &&
+    currentStage &&
+    candidateLoad.stageId === currentStage.id
+      ? candidateLoad.candidates
+      : null
+  const reservedSenatorIds = new Set(
+    electionStages
+      .filter((stage) => stage.office === 'SENATOR' && stage.id !== currentStage?.id)
+      .map((stage) => selections[stage.id]?.id)
+      .filter((id): id is string => id !== undefined),
+  )
+  const availableCandidates = loadedCandidates?.filter(
+    (candidate) => !reservedSenatorIds.has(candidate.id),
+  )
+  const selectedCandidate = currentStage
+    ? selections[currentStage.id]
+    : undefined
+
+  function selectCandidate(candidate: Candidate) {
+    if (!currentStage || !electionContext) return
+
+    const repeatsSenator =
+      currentStage.office === 'SENATOR' &&
+      electionStages.some(
+        (stage) =>
+          stage.office === 'SENATOR' &&
+          stage.id !== currentStage.id &&
+          selections[stage.id]?.id === candidate.id,
+      )
+    if (repeatsSenator) return
+
+    const nextSelections = { ...selections, [currentStage.id]: candidate }
+    setSelections(nextSelections)
+    const candidateIds = Object.fromEntries(
+      Object.entries(nextSelections).map(([stageId, selected]) => [stageId, selected.id]),
+    )
+    setStorageMessage(
+      saveBallot(electionContext, candidateIds) ? 'saved' : 'error',
+    )
+  }
+
+  function continueToNextStage() {
+    if (!selectedCandidate) return
+    setCurrentStageIndex((index) => index + 1)
+  }
+
+  function editStage(stageId: string) {
+    const stageIndex = electionStages.findIndex((stage) => stage.id === stageId)
+    if (stageIndex !== -1) setCurrentStageIndex(stageIndex)
+  }
+
+  function clearCurrentBallot() {
+    if (!electionContext) return
+    const removed = removeBallot(electionContext)
+    setSelections({})
+    setCurrentStageIndex(0)
+    setIsComplete(false)
+    setStorageMessage(removed ? 'cleared' : 'error')
+  }
+
+  function chooseUf(uf: BrazilianUf) {
+    saveSelectedUf(uf)
+    setSelections({})
+    setCandidateLoad(null)
+    setCurrentStageIndex(0)
+    setIsComplete(false)
+    setStorageMessage('idle')
+    setIsRestoring(true)
+    setSelectedUf(uf)
+  }
+
+  function changeUf() {
+    removeSelectedUf()
+    setSelectedUf(null)
+    setSelections({})
+    setCandidateLoad(null)
+    setCurrentStageIndex(0)
+    setIsComplete(false)
+    setIsRestoring(false)
+    setStorageMessage('idle')
+  }
+
+  return (
+    <main className="app-shell">
+      <AppHeader />
+      <p className="privacy-note">
+        Suas escolhas ficam salvas somente neste dispositivo.
+      </p>
+      <StorageFeedback message={storageMessage} />
+
+      {!selectedUf ? (
+        <StateSelectionScreen onSelect={chooseUf} />
+      ) : isComplete ? (
+        <CompletedBallot
+          selections={selections}
+          electionYear={electionConfig!.electionYear}
+          uf={electionConfig!.uf}
+          reviewGroups={reviewGroups}
+          onReview={() => setIsComplete(false)}
+          onClear={clearCurrentBallot}
+          onChangeUf={changeUf}
+        />
+      ) : currentStage ? (
+        <section className="selection" aria-labelledby="page-title">
+          <p className="eyebrow">
+            Eleições {electionConfig!.electionYear} • UF {electionConfig!.uf}
+          </p>
+          <h1 id="page-title">Monte sua cola eleitoral</h1>
+          <progress
+            className="selection-progress"
+            max={electionStages.length}
+            value={currentStageIndex + 1}
+            aria-label={`Etapa ${currentStageIndex + 1} de ${electionStages.length}`}
+          />
+          <p className="step-count">
+            Etapa {currentStageIndex + 1} de {electionStages.length}
+          </p>
+
+          <h2 className="office-heading">{currentStage.label}</h2>
+          <p className="selection-instruction">
+            Selecione uma candidatura para continuar.
+          </p>
+
+          <p className="mock-notice" role="note">
+            Candidaturas e imagens provenientes de dados oficiais da Justiça Eleitoral/TSE.
+          </p>
+
+          <fieldset
+            className="candidate-fieldset"
+            aria-busy={isRestoring || loadedCandidates === null}
+            disabled={isRestoring || loadedCandidates === null}
+          >
+            <legend>Candidaturas disponíveis</legend>
+            <div className="candidate-list">
+              {isRestoring ? (
+                <p className="candidate-list-message" role="status">
+                  Verificando escolhas salvas...
+                </p>
+              ) : loadedCandidates === null ? (
+                <p className="candidate-list-message" role="status">
+                  Carregando candidaturas...
+                </p>
+              ) : availableCandidates?.length ? (
+                availableCandidates.map((candidate) => (
+                  <CandidateOption
+                    key={candidate.id}
+                    candidate={candidate}
+                    roleLabel={currentStage.label}
+                    selected={candidate.id === selectedCandidate?.id}
+                    onSelect={() => selectCandidate(candidate)}
+                  />
+                ))
+              ) : (
+                <p className="candidate-list-message">
+                  Nenhuma candidatura disponível para esta etapa.
+                </p>
+              )}
+            </div>
+          </fieldset>
+
+          <p className="selection-feedback" role="status" aria-live="polite">
+            {selectedCandidate
+              ? `${selectedCandidate.ballotName} selecionado.`
+              : 'Nenhuma candidatura selecionada.'}
+          </p>
+
+          <div className={`flow-actions${currentStageIndex === 0 ? ' single-action' : ''}`}>
+            {currentStageIndex > 0 && (
+              <button
+                className="secondary-action"
+                type="button"
+                disabled={isRestoring}
+                onClick={() => setCurrentStageIndex((index) => index - 1)}
+              >
+                Voltar
+              </button>
+            )}
+            <button
+              className="primary-action"
+              type="button"
+              disabled={isRestoring || !selectedCandidate}
+              onClick={continueToNextStage}
+            >
+              {currentStageIndex === electionStages.length - 1
+                ? 'Revisar escolhas'
+                : 'Continuar'}
+            </button>
+          </div>
+          <ClearChoicesButton onClear={clearCurrentBallot} disabled={isRestoring} />
+          <button
+            className="change-uf"
+            type="button"
+            disabled={isRestoring}
+            onClick={changeUf}
+          >
+            Trocar estado
+          </button>
+        </section>
+      ) : (
+        <ReviewScreen
+          selections={selections}
+          electionYear={electionConfig!.electionYear}
+          uf={electionConfig!.uf}
+          electionStages={electionStages}
+          reviewGroups={reviewGroups}
+          onEdit={editStage}
+          onBack={() => setCurrentStageIndex(electionStages.length - 1)}
+          onComplete={() => setIsComplete(true)}
+          onClear={clearCurrentBallot}
+          onChangeUf={changeUf}
+        />
+      )}
+    </main>
+  )
+}
+
+type StateSelectionScreenProps = {
+  onSelect: (uf: BrazilianUf) => void
+}
+
+function StateSelectionScreen({ onSelect }: StateSelectionScreenProps) {
+  const [search, setSearch] = useState('')
+
+  const normalizedSearch = search.trim().toLocaleLowerCase('pt-BR')
+
+  const filteredStates = brazilianStates.filter((state) => {
+    if (!normalizedSearch) return true
+
+    return (
+      state.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch) ||
+      state.uf.toLocaleLowerCase('pt-BR').includes(normalizedSearch)
+    )
+  })
+
+  return (
+    <section className="state-selection-v2" aria-labelledby="state-title">
+      <div className="state-hero">
+        <div className="state-brand">
+          <span className="state-brand-mark" aria-hidden="true">
+            MS
+          </span>
+
+          <div>
+            <strong>Meu Santinho</strong>
+            <span>Eleições 2026</span>
+          </div>
+        </div>
+
+        <div className="state-heading">
+          <span className="state-step">Primeiro passo</span>
+
+          <h1 id="state-title">
+            Onde você
+            <br />
+            <span>vota?</span>
+          </h1>
+
+          <p>
+            Escolha seu estado para mostrarmos os candidatos
+            correspondentes à sua região.
+          </p>
+        </div>
+      </div>
+
+      <div className="state-glass-panel">
+        <label className="state-search">
+          <span className="state-search-icon" aria-hidden="true">
+            ⌕
+          </span>
+
+          <span className="sr-only">Buscar estado ou UF</span>
+
+          <input
+            type="search"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Buscar estado ou UF"
+            autoComplete="off"
+          />
+        </label>
+
+        <div className="state-list-header">
+          <span>Estados</span>
+          <span>
+            {filteredStates.length}{' '}
+            {filteredStates.length === 1 ? 'resultado' : 'resultados'}
+          </span>
+        </div>
+
+        <div className="state-grid-v2">
+          {filteredStates.map((state) => (
+            <button
+              className="state-option-v2"
+              type="button"
+              key={state.uf}
+              onClick={() => onSelect(state.uf)}
+            >
+              <span className="state-uf">{state.uf}</span>
+
+              <span className="state-name">{state.name}</span>
+
+              <span className="state-arrow" aria-hidden="true">
+                →
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {filteredStates.length === 0 && (
+          <div className="state-empty">
+            <strong>Nenhum estado encontrado</strong>
+            <span>Tente buscar pelo nome ou pela sigla.</span>
+          </div>
+        )}
+
+        <p className="state-privacy">
+          Sua escolha fica salva somente neste dispositivo.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+function AppHeader() {
+  return (
+    <header className="site-header">
+      <span className="brand">Meu Santinho</span>
+      <span className="development-label">Demonstração</span>
+    </header>
+  )
+}
+
+function StorageFeedback({ message }: { message: StorageMessage }) {
+  if (message === 'idle') return null
+
+  const messages: Record<Exclude<StorageMessage, 'idle'>, string> = {
+    saved: 'Escolhas salvas neste dispositivo.',
+    restored: 'Escolhas recuperadas deste dispositivo.',
+    cleared: 'Escolhas removidas deste dispositivo.',
+    error: 'Não foi possível atualizar as escolhas salvas neste dispositivo.',
+  }
+
+  return (
+    <p className="storage-feedback" role="status" aria-live="polite">
+      {messages[message]}
+    </p>
+  )
+}
+
+function ClearChoicesButton({
+  onClear,
+  disabled = false,
+}: {
+  onClear: () => void
+  disabled?: boolean
+}) {
+  return (
+    <button
+      className="clear-ballot"
+      type="button"
+      disabled={disabled}
+      onClick={onClear}
+    >
+      Limpar minhas escolhas
+    </button>
+  )
+}
+
+type CandidateOptionProps = {
+  candidate: Candidate
+  roleLabel: string
+  selected: boolean
+  onSelect: () => void
+}
+
+function CandidateOption({
+  candidate,
+  roleLabel,
+  selected,
+  onSelect,
+}: CandidateOptionProps) {
+  return (
+    <label className={`candidate-card${selected ? ' is-selected' : ''}`}>
+      <input
+        className="candidate-radio"
+        type="radio"
+        name="candidate"
+        value={candidate.id}
+        checked={selected}
+        onChange={onSelect}
+      />
+      <img className="candidate-photo" src={candidate.photoUrl ?? undefined} alt="" />
+      <CandidateInformation candidate={candidate} roleLabel={roleLabel} />
+      <span className="candidate-state">
+        {selected ? 'Selecionado' : 'Selecionar'}
+      </span>
+    </label>
+  )
+}
+
+type CandidateInformationProps = {
+  candidate: Candidate
+  roleLabel?: string
+}
+
+function CandidateInformation({ candidate, roleLabel }: CandidateInformationProps) {
+  return (
+    <span className="candidate-details">
+      {roleLabel && <span className="candidate-office">{roleLabel}</span>}
+      <span className="candidate-name">{candidate.ballotName}</span>
+      <span className="candidate-number">
+        <span className="number-label">Número</span>{' '}
+        <span className="number-value">{candidate.number}</span>
+      </span>
+      <span className="candidate-party">
+        Partido {candidate.partyAbbreviation} · legenda {candidate.partyNumber}
+      </span>
+    </span>
+  )
+}
+
+type ReviewScreenProps = {
+  selections: Record<string, Candidate>
+  electionYear: number
+  uf: string
+  electionStages: ElectionStage[]
+  reviewGroups: ChoiceGroup[]
+  onEdit: (stageId: string) => void
+  onBack: () => void
+  onComplete: () => void
+  onClear: () => void
+  onChangeUf: () => void
+}
+
+function ReviewScreen({
+  selections,
+  electionYear,
+  uf,
+  electionStages,
+  reviewGroups,
+  onEdit,
+  onBack,
+  onComplete,
+  onClear,
+  onChangeUf,
+}: ReviewScreenProps) {
+  return (
+    <section className="review-screen" aria-labelledby="page-title">
+      <p className="eyebrow">
+        Eleições {electionYear} • UF {uf}
+      </p>
+      <h1 id="page-title">Revise suas escolhas</h1>
+      <progress
+        className="selection-progress"
+        max={electionStages.length}
+        value={electionStages.length}
+        aria-label="Revisão das escolhas"
+      />
+      <p className="review-instruction">
+        Confira sua cola. Você ainda pode alterar qualquer escolha.
+      </p>
+
+      <div className="review-groups">
+        {reviewGroups.map((group) => (
+          <section className="review-group" key={group.office}>
+            <h2>{group.label}</h2>
+            {group.stages.map((stage) => {
+              const candidate = selections[stage.id]
+              if (!candidate) return null
+
+              return (
+                <article className="review-choice" key={stage.id}>
+                  <img
+                    className="review-photo"
+                    src={candidate.photoUrl ?? undefined}
+                    alt=""
+                  />
+                  <CandidateInformation
+                    candidate={candidate}
+                    roleLabel={stage.label}
+                  />
+                  <button
+                    className="edit-choice"
+                    type="button"
+                    aria-label={`Alterar ${stage.label}`}
+                    onClick={() => onEdit(stage.id)}
+                  >
+                    Alterar
+                  </button>
+                </article>
+              )
+            })}
+          </section>
+        ))}
+      </div>
+
+      <div className="flow-actions">
+        <button className="secondary-action" type="button" onClick={onBack}>
+          Voltar
+        </button>
+        <button className="primary-action" type="button" onClick={onComplete}>
+          Concluir cola
+        </button>
+      </div>
+      <ClearChoicesButton onClear={onClear} />
+      <button className="change-uf" type="button" onClick={onChangeUf}>
+        Trocar estado
+      </button>
+    </section>
+  )
+}
+
+type CompletedBallotProps = {
+  selections: Record<string, Candidate>
+  electionYear: number
+  uf: string
+  reviewGroups: ChoiceGroup[]
+  onReview: () => void
+  onClear: () => void
+  onChangeUf: () => void
+}
+
+function CompletedBallot({
+  selections,
+  electionYear,
+  uf,
+  reviewGroups,
+  onReview,
+  onClear,
+  onChangeUf,
+}: CompletedBallotProps) {
+  return (
+    <section className="ballot-screen" aria-labelledby="page-title">
+      <p className="eyebrow">
+        Eleições {electionYear} • UF {uf}
+      </p>
+      <h1 id="page-title">Sua cola eleitoral</h1>
+      <p className="ballot-introduction">
+        Suas escolhas, organizadas para consulta.
+      </p>
+
+      <div className="ballot-groups">
+        {reviewGroups.map((group) => (
+          <section className="ballot-group" key={group.office}>
+            <h2>{group.label}</h2>
+            <ol className="ballot-list">
+              {group.stages.map((stage) => {
+                const candidate = selections[stage.id]
+                if (!candidate) return null
+
+                return (
+                  <li className="ballot-choice" key={stage.id}>
+                    <img
+                      className="ballot-photo"
+                      src={candidate.photoUrl ?? undefined}
+                      alt=""
+                    />
+                    <CandidateInformation
+                      candidate={candidate}
+                      roleLabel={
+                        group.office === 'SENATOR'
+                          ? stage.label.replace(`${group.label} — `, '')
+                          : undefined
+                      }
+                    />
+                  </li>
+                )
+              })}
+            </ol>
+          </section>
+        ))}
+      </div>
+
+      <button className="secondary-action review-again" type="button" onClick={onReview}>
+        Voltar à revisão
+      </button>
+      <ClearChoicesButton onClear={onClear} />
+      <button className="change-uf" type="button" onClick={onChangeUf}>
+        Trocar estado
+      </button>
+    </section>
+  )
+}
+
+export default App

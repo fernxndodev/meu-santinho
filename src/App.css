@@ -1,0 +1,3442 @@
+.app-shell {
+  width: min(100% - 32px, 840px);
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.site-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.privacy-note,
+.storage-feedback {
+  max-width: 720px;
+  margin: 5px auto 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.storage-feedback {
+  min-height: 18px;
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.development-label {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.selection {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 0 32px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.office-heading {
+  margin: 16px 0 0;
+  color: var(--ink);
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.selection-instruction,
+.review-instruction,
+.ballot-introduction {
+  margin: 6px 0 0;
+  color: var(--ink-muted);
+}
+
+.selection-progress {
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin: 14px 0 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 99px;
+  background: var(--border);
+  accent-color: var(--ink);
+}
+
+.selection-progress::-webkit-progress-bar {
+  border-radius: 99px;
+  background: var(--border);
+}
+
+.selection-progress::-webkit-progress-value {
+  border-radius: 99px;
+  background: var(--ink);
+}
+
+.selection-progress::-moz-progress-bar {
+  border-radius: 99px;
+  background: var(--ink);
+}
+
+.step-count {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.review-screen,
+.ballot-screen {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 0 32px;
+}
+
+.review-screen .selection-progress,
+.ballot-screen .selection-progress {
+  margin-top: 20px;
+}
+
+.review-instruction,
+.ballot-introduction {
+  margin-top: 8px;
+}
+
+.review-groups,
+.ballot-groups {
+  margin-top: 18px;
+}
+
+.review-group,
+.ballot-group {
+  padding: 12px 0 6px;
+  border-top: 1px solid var(--border);
+}
+
+.review-group h2,
+.ballot-group h2 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.review-choice {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.review-photo {
+  width: 60px;
+  height: 72px;
+  border-radius: 8px;
+  background: var(--photo-bg);
+  object-fit: cover;
+}
+
+.ballot-photo {
+  width: 44px;
+  height: 54px;
+  border-radius: 6px;
+  background: var(--photo-bg);
+  object-fit: cover;
+}
+
+.review-choice .candidate-details,
+.ballot-choice .candidate-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 0;
+}
+
+.edit-choice {
+  min-height: 44px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.edit-choice:focus-visible,
+.flow-actions button:focus-visible,
+.review-again:focus-visible,
+.candidate-card:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.flow-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.flow-actions button,
+.review-again {
+  min-height: 52px;
+  padding: 12px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flow-actions .primary-action {
+  grid-row: 1;
+  width: 100%;
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.flow-actions .primary-action:not(:disabled):hover {
+  background: #39413f;
+}
+
+.flow-actions .primary-action:disabled {
+  border-color: var(--border-strong);
+  background: var(--border);
+  color: var(--ink-muted);
+  cursor: not-allowed;
+}
+
+.flow-actions .secondary-action {
+  grid-row: 2;
+  min-height: 44px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.review-again {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.single-action .primary-action {
+  width: 100%;
+}
+
+.ballot-group {
+  padding: 10px 0 6px;
+}
+
+.ballot-group h2 {
+  margin: 0 0 2px;
+  font-size: 16px;
+}
+
+.ballot-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ballot-choice {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ballot-photo {
+  width: 40px;
+  height: 48px;
+}
+
+.ballot-choice .candidate-details {
+  gap: 2px;
+}
+
+.ballot-choice .candidate-name {
+  font-size: 15px;
+}
+
+.ballot-choice .candidate-number {
+  font-size: 17px;
+}
+
+.ballot-choice .candidate-party {
+  font-size: 12px;
+}
+
+.review-again {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.clear-ballot {
+  display: block;
+  min-height: 44px;
+  max-width: 100%;
+  margin: 24px auto 0;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.clear-ballot:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.clear-ballot:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.mock-notice {
+  margin: 14px 0 16px;
+  padding: 8px 10px;
+  border-left: 2px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--notice-bg);
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.candidate-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.candidate-fieldset legend {
+  margin-bottom: 8px;
+  padding: 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.candidate-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.candidate-list-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.candidate-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .candidate-card:hover {
+    border-color: var(--ink-muted);
+    background: #fafbfa;
+  }
+}
+
+.candidate-card.is-selected {
+  border: 2px solid var(--ink);
+  padding: 11px;
+  background: var(--selected-bg);
+}
+
+.candidate-radio {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.candidate-radio:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.candidate-photo {
+  width: 104px;
+  height: 128px;
+  border-radius: 8px;
+  background: var(--photo-bg);
+  object-fit: cover;
+}
+
+.candidate-card .candidate-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding-right: 30px;
+}
+
+.candidate-card .candidate-number {
+  order: 1;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.candidate-card .candidate-name {
+  order: 2;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.candidate-card .candidate-office {
+  order: 3;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.candidate-card .candidate-party {
+  order: 4;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.candidate-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.candidate-name {
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.candidate-number {
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.number-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.number-value {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.candidate-party {
+  overflow-wrap: anywhere;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.candidate-state {
+  grid-column: 2;
+  justify-self: start;
+  min-height: 24px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--notice-bg);
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.is-selected .candidate-state {
+  color: var(--ink);
+  background: #dfe4e1;
+}
+
+.selection-feedback {
+  min-height: 18px;
+  margin: 10px 0 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+@media (min-width: 680px) {
+  .app-shell {
+    width: min(100% - 48px, 840px);
+  }
+
+  .selection {
+    padding-top: 36px;
+  }
+
+  .review-screen,
+  .ballot-screen {
+    padding-top: 52px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .candidate-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flow-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .flow-actions .primary-action {
+    grid-row: auto;
+    width: auto;
+  }
+
+  .flow-actions .secondary-action {
+    grid-row: auto;
+    min-width: 120px;
+    border-color: var(--ink);
+    background: var(--surface);
+    text-decoration: none;
+  }
+
+  .single-action .primary-action {
+    flex: 0 1 260px;
+    width: auto;
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .candidate-card {
+    transition: border-color 120ms ease, background-color 120ms ease;
+  }
+}
+
+/* State selection */
+
+.state-selection {
+  display: grid;
+  gap: 20px;
+  padding: 28px 0 48px;
+}
+
+.state-selection h1 {
+  margin: 0;
+}
+
+.state-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.state-option {
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--border, #d7dbd8);
+  border-radius: 14px;
+  background: var(--surface, #ffffff);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.state-option:hover {
+  border-color: currentColor;
+}
+
+.state-option:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+}
+
+.state-option strong {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+.change-uf {
+  display: block;
+  margin: 16px auto 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.change-uf:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (min-width: 680px) {
+  .state-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* Glassmorphism v1 - State Selection */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.66);
+  --glass-bg-strong: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.82);
+  --glass-shadow: 0 20px 60px rgba(26, 47, 42, 0.10);
+  --glass-shadow-hover: 0 24px 70px rgba(26, 47, 42, 0.15);
+
+  --glass-primary: #176b5b;
+  --glass-primary-hover: #12594c;
+  --glass-text: #17211f;
+  --glass-muted: #66736f;
+
+  --glass-radius-lg: 28px;
+  --glass-radius-md: 18px;
+}
+
+/* Fundo geral */
+
+.app-shell {
+  position: relative;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+.app-shell::before,
+.app-shell::after {
+  position: fixed;
+  z-index: -1;
+  width: 360px;
+  height: 360px;
+  border-radius: 999px;
+  content: "";
+  pointer-events: none;
+  filter: blur(10px);
+  opacity: 0.55;
+}
+
+.app-shell::before {
+  top: -150px;
+  right: -130px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(69, 170, 144, 0.28) 0%,
+      rgba(69, 170, 144, 0) 70%
+    );
+}
+
+.app-shell::after {
+  bottom: -170px;
+  left: -150px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(107, 142, 133, 0.20) 0%,
+      rgba(107, 142, 133, 0) 70%
+    );
+}
+
+/* Tela de estado */
+
+.state-selection {
+  width: min(100%, 720px);
+  margin-inline: auto;
+  padding: 32px 0 56px;
+  gap: 24px;
+}
+
+.state-selection .eyebrow {
+  margin-bottom: -12px;
+  color: var(--glass-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.state-selection h1 {
+  max-width: 560px;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  color: var(--glass-text);
+}
+
+.state-selection > p:not(.eyebrow) {
+  max-width: 540px;
+  margin-top: -8px;
+  color: var(--glass-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* Container glass dos estados */
+
+.state-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius-lg);
+
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+
+/* Cada estado */
+
+.state-option {
+  position: relative;
+  min-height: 68px;
+  padding: 14px 16px;
+
+  border: 1px solid rgba(23, 107, 91, 0.08);
+  border-radius: var(--glass-radius-md);
+
+  background: rgba(255, 255, 255, 0.54);
+  color: var(--glass-text);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.state-option::after {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+
+  border-radius: 999px;
+  background: rgba(23, 107, 91, 0.09);
+
+  color: var(--glass-primary);
+  content: "→";
+
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.state-option span {
+  flex: 1;
+  font-size: 0.98rem;
+  font-weight: 650;
+}
+
+.state-option strong {
+  order: -1;
+
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+
+  border-radius: 13px;
+  background: rgba(23, 107, 91, 0.10);
+
+  color: var(--glass-primary);
+
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+}
+
+.state-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 107, 91, 0.22);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.state-option:active {
+  transform: scale(0.985);
+}
+
+.state-option:focus-visible {
+  outline: 3px solid rgba(23, 107, 91, 0.28);
+  outline-offset: 3px;
+}
+
+/* Desktop/tablet */
+
+@media (min-width: 680px) {
+  .state-selection {
+    padding-top: 48px;
+  }
+
+  .state-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 16px;
+  }
+}
+
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+  .state-option {
+    transition: none;
+  }
+
+  .state-option:hover,
+  .state-option:active {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   Meu Santinho — State Selection V2
+   ========================================================= */
+
+.state-selection-v2 {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+  padding: 28px 0 64px;
+}
+
+.state-hero {
+  display: grid;
+  gap: 52px;
+  margin-bottom: 30px;
+}
+
+.state-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.state-brand-mark {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 12px 32px rgba(26, 47, 42, 0.08);
+  color: #176b5b;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.state-brand > div {
+  display: grid;
+  gap: 1px;
+}
+
+.state-brand strong {
+  color: #17211f;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+}
+
+.state-brand div span {
+  color: #71807c;
+  font-size: 0.72rem;
+}
+
+.state-heading {
+  max-width: 680px;
+}
+
+.state-step {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(23, 107, 91, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.56);
+  color: #176b5b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.state-heading h1 {
+  margin: 0;
+  color: #17211f;
+  font-size: clamp(3rem, 12vw, 5.6rem);
+  font-weight: 760;
+  line-height: 0.88;
+  letter-spacing: -0.075em;
+}
+
+.state-heading h1 span {
+  color: #176b5b;
+}
+
+.state-heading p {
+  max-width: 520px;
+  margin: 24px 0 0;
+  color: #687571;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.state-glass-panel {
+  position: relative;
+  padding: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow:
+    0 30px 80px rgba(26, 47, 42, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(28px);
+}
+
+.state-glass-panel::before {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: rgba(82, 181, 153, 0.12);
+  content: "";
+  pointer-events: none;
+  filter: blur(10px);
+}
+
+.state-search {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 62px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  border: 1px solid rgba(23, 107, 91, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 30px rgba(26, 47, 42, 0.05);
+}
+
+.state-search:focus-within {
+  border-color: rgba(23, 107, 91, 0.36);
+  box-shadow:
+    0 0 0 4px rgba(23, 107, 91, 0.08),
+    0 10px 30px rgba(26, 47, 42, 0.05);
+}
+
+.state-search-icon {
+  color: #176b5b;
+  font-size: 1.5rem;
+}
+
+.state-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #17211f;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.state-search input::placeholder {
+  color: #89938f;
+}
+
+.state-list-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 4px 10px;
+}
+
+.state-list-header span:first-child {
+  color: #25312e;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.state-list-header span:last-child {
+  color: #89938f;
+  font-size: 0.72rem;
+}
+
+.state-grid-v2 {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+}
+
+.state-option-v2 {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 36px;
+  min-height: 66px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.46);
+  color: #17211f;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.state-option-v2:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 107, 91, 0.13);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 34px rgba(26, 47, 42, 0.08);
+}
+
+.state-option-v2:active {
+  transform: scale(0.985);
+}
+
+.state-option-v2:focus-visible {
+  outline: 3px solid rgba(23, 107, 91, 0.22);
+  outline-offset: 2px;
+}
+
+.state-uf {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(23, 107, 91, 0.09);
+  color: #176b5b;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.state-name {
+  overflow: hidden;
+  font-size: 0.94rem;
+  font-weight: 680;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.state-arrow {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(23, 107, 91, 0.07);
+  color: #176b5b;
+  font-size: 1rem;
+  transition: transform 160ms ease;
+}
+
+.state-option-v2:hover .state-arrow {
+  transform: translateX(2px);
+}
+
+.state-empty {
+  display: grid;
+  gap: 5px;
+  padding: 42px 20px;
+  text-align: center;
+}
+
+.state-empty strong {
+  color: #25312e;
+}
+
+.state-empty span {
+  color: #7a8783;
+  font-size: 0.88rem;
+}
+
+.state-privacy {
+  position: relative;
+  z-index: 1;
+  margin: 18px 4px 4px;
+  color: #89938f;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+@media (min-width: 720px) {
+  .state-selection-v2 {
+    padding-top: 42px;
+  }
+
+  .state-grid-v2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .state-glass-panel {
+    padding: 18px;
+  }
+}
+
+@media (min-width: 980px) {
+  .state-selection-v2 {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(480px, 1.2fr);
+    align-items: start;
+    gap: 64px;
+    padding-top: 64px;
+  }
+
+  .state-hero {
+    position: sticky;
+    top: 40px;
+    margin: 0;
+  }
+
+  .state-heading h1 {
+    font-size: clamp(4rem, 6vw, 5.5rem);
+  }
+
+  .state-grid-v2 {
+    grid-template-columns: 1fr;
+    max-height: 540px;
+    overflow-y: auto;
+    padding-right: 3px;
+  }
+
+  .state-grid-v2::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .state-grid-v2::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(23, 107, 91, 0.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .state-option-v2,
+  .state-arrow {
+    transition: none;
+  }
+
+  .state-option-v2:hover,
+  .state-option-v2:active,
+  .state-option-v2:hover .state-arrow {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   Meu Santinho — Candidate Experience V2
+   ========================================================= */
+
+.candidate-selection-v2 {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 18px 0 56px;
+}
+
+.candidate-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.candidate-back {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 15px;
+  background: rgba(255,255,255,.62);
+  box-shadow: 0 10px 30px rgba(25,45,40,.07);
+  color: #17211f;
+  font: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.candidate-location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #77837f;
+  font-size: .76rem;
+}
+
+.candidate-location strong {
+  display: grid;
+  min-width: 42px;
+  height: 32px;
+  padding: 0 10px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(23,107,91,.1);
+  color: #176b5b;
+  font-size: .76rem;
+}
+
+.candidate-progress-v2 {
+  margin-bottom: 36px;
+}
+
+.candidate-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  color: #71807c;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.candidate-progress-meta strong {
+  color: #176b5b;
+}
+
+.candidate-progress-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(23,107,91,.09);
+}
+
+.candidate-progress-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #176b5b;
+  transition: width 280ms ease;
+}
+
+.candidate-intro-v2 {
+  margin-bottom: 26px;
+}
+
+.candidate-stage-kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #176b5b;
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.candidate-intro-v2 h1 {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  color: #17211f;
+  font-size: clamp(2.45rem, 10vw, 4.5rem);
+  font-weight: 760;
+  line-height: .95;
+  letter-spacing: -.065em;
+}
+
+.candidate-intro-v2 h1 span {
+  color: #176b5b;
+}
+
+.candidate-intro-v2 p {
+  max-width: 500px;
+  margin: 18px 0 0;
+  color: #6d7975;
+  line-height: 1.6;
+}
+
+.candidate-search-panel {
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.88);
+  border-radius: 27px;
+  background: rgba(255,255,255,.56);
+  box-shadow:
+    0 24px 70px rgba(25,45,40,.1),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(26px);
+  backdrop-filter: blur(26px);
+}
+
+.candidate-search-v2 {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 17px;
+  border: 1px solid rgba(23,107,91,.11);
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 8px 26px rgba(25,45,40,.05);
+}
+
+.candidate-search-v2:focus-within {
+  border-color: rgba(23,107,91,.35);
+  box-shadow: 0 0 0 4px rgba(23,107,91,.08);
+}
+
+.candidate-search-symbol {
+  color: #176b5b;
+  font-size: 1.45rem;
+}
+
+.candidate-search-v2 input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #17211f;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.candidate-search-v2 input::placeholder {
+  color: #929c98;
+}
+
+.candidate-search-clear {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(23,107,91,.08);
+  color: #176b5b;
+  font: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.candidate-search-empty {
+  display: grid;
+  justify-items: center;
+  padding: 46px 20px 38px;
+  text-align: center;
+}
+
+.candidate-search-illustration {
+  display: grid;
+  width: 66px;
+  height: 66px;
+  margin-bottom: 18px;
+  place-items: center;
+  border: 1px solid rgba(23,107,91,.1);
+  border-radius: 21px;
+  background: rgba(23,107,91,.07);
+  color: #176b5b;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+.candidate-search-empty strong {
+  color: #25312e;
+  font-size: 1.05rem;
+}
+
+.candidate-search-empty p {
+  max-width: 310px;
+  margin: 7px 0 20px;
+  color: #7b8783;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+.show-all-candidates {
+  min-height: 44px;
+  padding: 0 17px;
+  border: 1px solid rgba(23,107,91,.15);
+  border-radius: 14px;
+  background: rgba(255,255,255,.62);
+  color: #176b5b;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.candidate-results {
+  padding-top: 18px;
+}
+
+.candidate-results-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px 10px;
+  color: #77837f;
+  font-size: .72rem;
+}
+
+.candidate-results-heading strong {
+  color: #33403c;
+  font-size: .78rem;
+}
+
+.candidate-list-v2 {
+  display: grid;
+  gap: 9px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.candidate-list-v2 .candidate-card {
+  display: grid;
+  grid-template-columns: 68px minmax(0,1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(23,107,91,.08);
+  border-radius: 19px;
+  background: rgba(255,255,255,.58);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.candidate-list-v2 .candidate-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(23,107,91,.18);
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 12px 34px rgba(25,45,40,.07);
+}
+
+.candidate-list-v2 .candidate-card.is-selected {
+  border-color: rgba(23,107,91,.4);
+  background: rgba(231,246,241,.88);
+  box-shadow: 0 0 0 3px rgba(23,107,91,.07);
+}
+
+.candidate-list-v2 .candidate-photo {
+  width: 68px;
+  height: 78px;
+  border-radius: 15px;
+  object-fit: cover;
+  background: rgba(23,107,91,.06);
+}
+
+.candidate-list-v2 .candidate-details {
+  min-width: 0;
+}
+
+.candidate-list-v2 .candidate-office {
+  display: none;
+}
+
+.candidate-list-v2 .candidate-name {
+  display: block;
+  margin-bottom: 5px;
+  overflow: hidden;
+  color: #1c2825;
+  font-size: .95rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candidate-list-v2 .candidate-number {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.candidate-list-v2 .number-label {
+  color: #8a9591;
+  font-size: .66rem;
+}
+
+.candidate-list-v2 .number-value {
+  color: #176b5b;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -.03em;
+}
+
+.candidate-list-v2 .candidate-party {
+  display: block;
+  color: #77837f;
+  font-size: .72rem;
+}
+
+.candidate-list-v2 .candidate-state {
+  grid-column: 1 / -1;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 11px;
+  background: rgba(23,107,91,.07);
+  color: #176b5b;
+  font-size: .72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.candidate-no-results {
+  display: grid;
+  gap: 5px;
+  padding: 40px 18px;
+  text-align: center;
+}
+
+.candidate-no-results strong {
+  color: #25312e;
+}
+
+.candidate-no-results span {
+  color: #7b8783;
+  font-size: .82rem;
+}
+
+.selected-candidate-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 15px 17px;
+  border: 1px solid rgba(23,107,91,.13);
+  border-radius: 19px;
+  background: rgba(232,246,242,.68);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.selected-candidate-summary > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.selected-candidate-summary div span {
+  color: #75817d;
+  font-size: .68rem;
+}
+
+.selected-candidate-summary div strong {
+  overflow: hidden;
+  color: #25312e;
+  font-size: .9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-candidate-number {
+  color: #176b5b;
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+.candidate-footer-v2 {
+  display: grid;
+  gap: 13px;
+  margin-top: 22px;
+}
+
+.candidate-footer-v2 p {
+  margin: 0;
+  color: #8a9591;
+  font-size: .68rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.continue-v2 {
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 18px;
+  background: #176b5b;
+  box-shadow: 0 16px 34px rgba(23,107,91,.2);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.continue-v2:not(:disabled):active {
+  transform: scale(.985);
+}
+
+.continue-v2:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: .38;
+}
+
+.candidate-secondary-controls {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.candidate-secondary-controls .clear-ballot,
+.candidate-secondary-controls .change-uf {
+  margin: 0;
+  font-size: .72rem;
+}
+
+@media (min-width: 680px) {
+  .candidate-selection-v2 {
+    padding-top: 34px;
+  }
+
+  .candidate-list-v2 .candidate-card {
+    grid-template-columns: 76px minmax(0,1fr) auto;
+  }
+
+  .candidate-list-v2 .candidate-photo {
+    width: 76px;
+    height: 86px;
+  }
+
+  .candidate-list-v2 .candidate-state {
+    grid-column: auto;
+    min-width: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .candidate-progress-track > span,
+  .candidate-list-v2 .candidate-card,
+  .continue-v2 {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   Meu Santinho — Candidate Experience V2
+   ========================================================= */
+
+.candidate-selection-v2 {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 18px 0 56px;
+}
+
+.candidate-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.candidate-back {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 15px;
+  background: rgba(255,255,255,.62);
+  box-shadow: 0 10px 30px rgba(25,45,40,.07);
+  color: #17211f;
+  font: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.candidate-location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #77837f;
+  font-size: .76rem;
+}
+
+.candidate-location strong {
+  display: grid;
+  min-width: 42px;
+  height: 32px;
+  padding: 0 10px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(23,107,91,.1);
+  color: #176b5b;
+  font-size: .76rem;
+}
+
+.candidate-progress-v2 {
+  margin-bottom: 36px;
+}
+
+.candidate-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  color: #71807c;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.candidate-progress-meta strong {
+  color: #176b5b;
+}
+
+.candidate-progress-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(23,107,91,.09);
+}
+
+.candidate-progress-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #176b5b;
+  transition: width 280ms ease;
+}
+
+.candidate-intro-v2 {
+  margin-bottom: 26px;
+}
+
+.candidate-stage-kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #176b5b;
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.candidate-intro-v2 h1 {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  color: #17211f;
+  font-size: clamp(2.45rem, 10vw, 4.5rem);
+  font-weight: 760;
+  line-height: .95;
+  letter-spacing: -.065em;
+}
+
+.candidate-intro-v2 h1 span {
+  color: #176b5b;
+}
+
+.candidate-intro-v2 p {
+  max-width: 500px;
+  margin: 18px 0 0;
+  color: #6d7975;
+  line-height: 1.6;
+}
+
+.candidate-search-panel {
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.88);
+  border-radius: 27px;
+  background: rgba(255,255,255,.56);
+  box-shadow:
+    0 24px 70px rgba(25,45,40,.1),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(26px);
+  backdrop-filter: blur(26px);
+}
+
+.candidate-search-v2 {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 17px;
+  border: 1px solid rgba(23,107,91,.11);
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 8px 26px rgba(25,45,40,.05);
+}
+
+.candidate-search-v2:focus-within {
+  border-color: rgba(23,107,91,.35);
+  box-shadow: 0 0 0 4px rgba(23,107,91,.08);
+}
+
+.candidate-search-symbol {
+  color: #176b5b;
+  font-size: 1.45rem;
+}
+
+.candidate-search-v2 input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #17211f;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.candidate-search-v2 input::placeholder {
+  color: #929c98;
+}
+
+.candidate-search-clear {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(23,107,91,.08);
+  color: #176b5b;
+  font: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.candidate-search-empty {
+  display: grid;
+  justify-items: center;
+  padding: 46px 20px 38px;
+  text-align: center;
+}
+
+.candidate-search-illustration {
+  display: grid;
+  width: 66px;
+  height: 66px;
+  margin-bottom: 18px;
+  place-items: center;
+  border: 1px solid rgba(23,107,91,.1);
+  border-radius: 21px;
+  background: rgba(23,107,91,.07);
+  color: #176b5b;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+.candidate-search-empty strong {
+  color: #25312e;
+  font-size: 1.05rem;
+}
+
+.candidate-search-empty p {
+  max-width: 310px;
+  margin: 7px 0 20px;
+  color: #7b8783;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+.show-all-candidates {
+  min-height: 44px;
+  padding: 0 17px;
+  border: 1px solid rgba(23,107,91,.15);
+  border-radius: 14px;
+  background: rgba(255,255,255,.62);
+  color: #176b5b;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.candidate-results {
+  padding-top: 18px;
+}
+
+.candidate-results-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px 10px;
+  color: #77837f;
+  font-size: .72rem;
+}
+
+.candidate-results-heading strong {
+  color: #33403c;
+  font-size: .78rem;
+}
+
+.candidate-list-v2 {
+  display: grid;
+  gap: 9px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.candidate-list-v2 .candidate-card {
+  display: grid;
+  grid-template-columns: 68px minmax(0,1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(23,107,91,.08);
+  border-radius: 19px;
+  background: rgba(255,255,255,.58);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.candidate-list-v2 .candidate-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(23,107,91,.18);
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 12px 34px rgba(25,45,40,.07);
+}
+
+.candidate-list-v2 .candidate-card.is-selected {
+  border-color: rgba(23,107,91,.4);
+  background: rgba(231,246,241,.88);
+  box-shadow: 0 0 0 3px rgba(23,107,91,.07);
+}
+
+.candidate-list-v2 .candidate-photo {
+  width: 68px;
+  height: 78px;
+  border-radius: 15px;
+  object-fit: cover;
+  background: rgba(23,107,91,.06);
+}
+
+.candidate-list-v2 .candidate-details {
+  min-width: 0;
+}
+
+.candidate-list-v2 .candidate-office {
+  display: none;
+}
+
+.candidate-list-v2 .candidate-name {
+  display: block;
+  margin-bottom: 5px;
+  overflow: hidden;
+  color: #1c2825;
+  font-size: .95rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candidate-list-v2 .candidate-number {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.candidate-list-v2 .number-label {
+  color: #8a9591;
+  font-size: .66rem;
+}
+
+.candidate-list-v2 .number-value {
+  color: #176b5b;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -.03em;
+}
+
+.candidate-list-v2 .candidate-party {
+  display: block;
+  color: #77837f;
+  font-size: .72rem;
+}
+
+.candidate-list-v2 .candidate-state {
+  grid-column: 1 / -1;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 11px;
+  background: rgba(23,107,91,.07);
+  color: #176b5b;
+  font-size: .72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.candidate-no-results {
+  display: grid;
+  gap: 5px;
+  padding: 40px 18px;
+  text-align: center;
+}
+
+.candidate-no-results strong {
+  color: #25312e;
+}
+
+.candidate-no-results span {
+  color: #7b8783;
+  font-size: .82rem;
+}
+
+.selected-candidate-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 15px 17px;
+  border: 1px solid rgba(23,107,91,.13);
+  border-radius: 19px;
+  background: rgba(232,246,242,.68);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.selected-candidate-summary > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.selected-candidate-summary div span {
+  color: #75817d;
+  font-size: .68rem;
+}
+
+.selected-candidate-summary div strong {
+  overflow: hidden;
+  color: #25312e;
+  font-size: .9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-candidate-number {
+  color: #176b5b;
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+.candidate-footer-v2 {
+  display: grid;
+  gap: 13px;
+  margin-top: 22px;
+}
+
+.candidate-footer-v2 p {
+  margin: 0;
+  color: #8a9591;
+  font-size: .68rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.continue-v2 {
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 18px;
+  background: #176b5b;
+  box-shadow: 0 16px 34px rgba(23,107,91,.2);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.continue-v2:not(:disabled):active {
+  transform: scale(.985);
+}
+
+.continue-v2:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: .38;
+}
+
+.candidate-secondary-controls {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.candidate-secondary-controls .clear-ballot,
+.candidate-secondary-controls .change-uf {
+  margin: 0;
+  font-size: .72rem;
+}
+
+@media (min-width: 680px) {
+  .candidate-selection-v2 {
+    padding-top: 34px;
+  }
+
+  .candidate-list-v2 .candidate-card {
+    grid-template-columns: 76px minmax(0,1fr) auto;
+  }
+
+  .candidate-list-v2 .candidate-photo {
+    width: 76px;
+    height: 86px;
+  }
+
+  .candidate-list-v2 .candidate-state {
+    grid-column: auto;
+    min-width: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .candidate-progress-track > span,
+  .candidate-list-v2 .candidate-card,
+  .continue-v2 {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   Meu Santinho — Digital Ballot / Completed V2
+   ========================================================= */
+
+.completed-v2 {
+  width: min(100%, 620px);
+  margin: 0 auto;
+  padding: 34px 0 64px;
+}
+
+.completed-heading {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.completed-badge {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(23, 107, 91, .13);
+  border-radius: 999px;
+  background: rgba(23, 107, 91, .08);
+  color: #176b5b;
+  font-size: .7rem;
+  font-weight: 850;
+  letter-spacing: .03em;
+}
+
+.completed-heading h1 {
+  margin: 13px 0 4px;
+  color: #17211f;
+  font-size: clamp(2rem, 9vw, 3.3rem);
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+.completed-heading p {
+  margin: 0;
+  color: #7a8682;
+  font-size: .82rem;
+}
+
+.digital-ballot {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 18px 18px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 30px;
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(64, 118, 151, .25),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 100% 70%,
+      rgba(31, 128, 106, .17),
+      transparent 32%
+    ),
+    linear-gradient(155deg, #172b42 0%, #101e33 48%, #0b1728 100%);
+  box-shadow:
+    0 34px 80px rgba(8, 24, 35, .25),
+    inset 0 1px 0 rgba(255, 255, 255, .12);
+  color: #fff;
+}
+
+.digital-ballot::before {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -100px;
+  right: -100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .04);
+  content: "";
+  filter: blur(2px);
+}
+
+.digital-ballot-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.digital-ballot-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.digital-ballot-logo {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .09);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.digital-ballot-brand > div {
+  display: grid;
+  gap: 2px;
+}
+
+.digital-ballot-brand strong {
+  font-size: .84rem;
+}
+
+.digital-ballot-brand div span {
+  color: rgba(255, 255, 255, .58);
+  font-size: .62rem;
+}
+
+.digital-ballot-uf {
+  display: grid;
+  min-width: 39px;
+  height: 30px;
+  padding: 0 9px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .07);
+  color: rgba(255, 255, 255, .82);
+  font-size: .66rem;
+  font-weight: 800;
+}
+
+.digital-ballot-divider {
+  height: 1px;
+  margin: 18px 0 7px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, .13),
+    transparent
+  );
+}
+
+.digital-ballot-choices {
+  position: relative;
+  z-index: 1;
+}
+
+.digital-ballot-choice {
+  display: grid;
+  justify-items: center;
+  padding: 15px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, .065);
+  text-align: center;
+}
+
+.digital-ballot-choice:last-child {
+  border-bottom: 0;
+}
+
+.digital-ballot-office {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, .58);
+  font-size: .59rem;
+  font-weight: 800;
+  letter-spacing: .095em;
+  text-transform: uppercase;
+}
+
+.digital-ballot-digits {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.digital-ballot-digit {
+  display: grid;
+  width: clamp(38px, 11vw, 52px);
+  height: clamp(45px, 13vw, 59px);
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 11px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, .13),
+      rgba(255, 255, 255, .055)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .14),
+    0 8px 18px rgba(0, 0, 0, .12);
+  color: #f8fbff;
+  font-size: clamp(1.35rem, 6vw, 1.85rem);
+  font-weight: 850;
+  line-height: 1;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.digital-ballot-name {
+  max-width: 90%;
+  margin-top: 8px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, .91);
+  font-size: .7rem;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.digital-ballot-party {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, .42);
+  font-size: .57rem;
+  font-weight: 700;
+}
+
+.digital-ballot-message {
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+  padding: 20px 17px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 19px;
+  background: rgba(255, 255, 255, .065);
+  text-align: center;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.digital-ballot-message > strong {
+  display: block;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+.digital-ballot-message p {
+  max-width: 350px;
+  margin: 7px auto 0;
+  color: rgba(255, 255, 255, .66);
+  font-size: .69rem;
+  line-height: 1.55;
+}
+
+.digital-ballot-message b {
+  color: #fff;
+  font-weight: 900;
+}
+
+.digital-ballot-footer {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding-top: 16px;
+  color: rgba(255, 255, 255, .35);
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.completed-saved {
+  margin: 18px 0 0;
+  color: #65736e;
+  font-size: .72rem;
+  text-align: center;
+}
+
+.completed-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.completed-actions .completed-edit,
+.completed-actions .completed-state {
+  width: 100%;
+  margin: 0;
+}
+
+.completed-v2 > .clear-ballot {
+  display: block;
+  margin: 16px auto 0;
+}
+
+@media (min-width: 540px) {
+  .digital-ballot {
+    padding: 28px 28px 22px;
+  }
+
+  .digital-ballot-choice {
+    padding: 17px 4px;
+  }
+
+  .completed-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================================================
+   Meu Santinho — Navy Glass Theme
+   ========================================================= */
+
+:root {
+  --ms-navy-950: #071321;
+  --ms-navy-900: #0b1728;
+  --ms-navy-850: #101e33;
+  --ms-navy-800: #172b42;
+
+  --ms-glass: rgba(255, 255, 255, 0.07);
+  --ms-glass-strong: rgba(255, 255, 255, 0.11);
+  --ms-border: rgba(255, 255, 255, 0.13);
+
+  --ms-text: #f8fbff;
+  --ms-text-soft: rgba(248, 251, 255, 0.68);
+  --ms-text-muted: rgba(248, 251, 255, 0.44);
+
+  --ms-accent: #7fb8c9;
+  --ms-accent-soft: rgba(127, 184, 201, 0.15);
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(64, 118, 151, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 55%,
+      rgba(31, 128, 106, 0.12),
+      transparent 32%
+    ),
+    linear-gradient(
+      155deg,
+      var(--ms-navy-800) 0%,
+      var(--ms-navy-850) 42%,
+      var(--ms-navy-950) 100%
+    );
+  background-attachment: fixed;
+  color: var(--ms-text);
+}
+
+.app-shell {
+  background: transparent;
+}
+
+/* Header */
+
+.site-header {
+  border-color: var(--ms-border);
+  background: rgba(11, 23, 40, 0.48);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+
+.site-header .brand {
+  color: var(--ms-text);
+}
+
+.development-label {
+  color: var(--ms-text-soft);
+}
+
+/* Tela de estado */
+
+.state-selection-v2 {
+  color: var(--ms-text);
+}
+
+.state-heading h1,
+.state-heading h1 span,
+.state-brand strong {
+  color: var(--ms-text);
+}
+
+.state-heading p,
+.state-brand span,
+.state-privacy,
+.state-list-header {
+  color: var(--ms-text-soft);
+}
+
+.state-step {
+  color: var(--ms-accent);
+}
+
+.state-brand-mark {
+  border-color: var(--ms-border);
+  background: var(--ms-glass);
+  color: var(--ms-text);
+}
+
+.state-glass-panel {
+  border-color: var(--ms-border);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.19),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.state-search {
+  border-color: var(--ms-border);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.state-search input {
+  color: var(--ms-text);
+}
+
+.state-search input::placeholder {
+  color: var(--ms-text-muted);
+}
+
+.state-search-icon {
+  color: var(--ms-accent);
+}
+
+.state-option-v2 {
+  border-color: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.055);
+  color: var(--ms-text);
+}
+
+.state-option-v2:hover {
+  border-color: rgba(127, 184, 201, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.state-uf,
+.state-arrow {
+  color: var(--ms-accent);
+}
+
+.state-name {
+  color: var(--ms-text);
+}
+
+/* Seleção de candidatura */
+
+.candidate-selection-v2 {
+  color: var(--ms-text);
+}
+
+.candidate-back {
+  border-color: var(--ms-border);
+  background: var(--ms-glass);
+  color: var(--ms-text);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.candidate-location,
+.candidate-progress-meta {
+  color: var(--ms-text-soft);
+}
+
+.candidate-location strong {
+  background: var(--ms-accent-soft);
+  color: var(--ms-accent);
+}
+
+.candidate-progress-meta strong,
+.candidate-stage-kicker {
+  color: var(--ms-accent);
+}
+
+.candidate-progress-track {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.candidate-progress-track > span {
+  background: var(--ms-accent);
+}
+
+.candidate-intro-v2 h1 {
+  color: var(--ms-text);
+}
+
+.candidate-intro-v2 h1 span {
+  color: var(--ms-accent);
+}
+
+.candidate-intro-v2 p {
+  color: var(--ms-text-soft);
+}
+
+.candidate-search-panel {
+  border-color: var(--ms-border);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.candidate-search-v2 {
+  border-color: var(--ms-border);
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: none;
+}
+
+.candidate-search-v2:focus-within {
+  border-color: rgba(127, 184, 201, 0.42);
+  box-shadow: 0 0 0 4px rgba(127, 184, 201, 0.08);
+}
+
+.candidate-search-v2 input {
+  color: var(--ms-text);
+}
+
+.candidate-search-v2 input::placeholder {
+  color: var(--ms-text-muted);
+}
+
+.candidate-search-symbol {
+  color: var(--ms-accent);
+}
+
+.candidate-search-clear {
+  background: var(--ms-accent-soft);
+  color: var(--ms-accent);
+}
+
+.candidate-search-empty strong,
+.candidate-results-heading strong,
+.candidate-no-results strong {
+  color: var(--ms-text);
+}
+
+.candidate-search-empty p,
+.candidate-results-heading,
+.candidate-no-results span {
+  color: var(--ms-text-soft);
+}
+
+.candidate-search-illustration {
+  border-color: var(--ms-border);
+  background: var(--ms-accent-soft);
+  color: var(--ms-accent);
+}
+
+.show-all-candidates {
+  border-color: var(--ms-border);
+  background: var(--ms-glass);
+  color: var(--ms-text);
+}
+
+.candidate-list-v2 .candidate-card {
+  border-color: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.candidate-list-v2 .candidate-card:hover {
+  border-color: rgba(127, 184, 201, 0.28);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.candidate-list-v2 .candidate-card.is-selected {
+  border-color: rgba(127, 184, 201, 0.5);
+  background: rgba(127, 184, 201, 0.13);
+  box-shadow: 0 0 0 3px rgba(127, 184, 201, 0.06);
+}
+
+.candidate-list-v2 .candidate-name {
+  color: var(--ms-text);
+}
+
+.candidate-list-v2 .number-value {
+  color: var(--ms-accent);
+}
+
+.candidate-list-v2 .number-label,
+.candidate-list-v2 .candidate-party {
+  color: var(--ms-text-soft);
+}
+
+.candidate-list-v2 .candidate-state {
+  background: var(--ms-accent-soft);
+  color: var(--ms-accent);
+}
+
+.selected-candidate-summary {
+  border-color: var(--ms-border);
+  background: rgba(127, 184, 201, 0.1);
+}
+
+.selected-candidate-summary div span {
+  color: var(--ms-text-soft);
+}
+
+.selected-candidate-summary div strong {
+  color: var(--ms-text);
+}
+
+.selected-candidate-number {
+  color: var(--ms-accent);
+}
+
+.continue-v2 {
+  background: rgba(127, 184, 201, 0.94);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+  color: #071321;
+}
+
+.candidate-footer-v2 p {
+  color: var(--ms-text-muted);
+}
+
+/* Mensagem neutra da etapa */
+
+.candidate-motivation {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--ms-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--ms-text-soft);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  text-align: center;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.candidate-motivation strong {
+  color: var(--ms-text);
+}
+
+.candidate-search-icon-large {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: rgba(127, 184, 201, 0.10);
+  color: var(--ms-accent, #7fb8c9);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+/* Primeiro passo — branco */
+.state-step {
+  color: #ffffff;
+}
+
+/* =========================================================
+   Revisão V2 — cards claros e centralizados
+   ========================================================= */
+
+.review-screen {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  color: #17211f;
+}
+
+.review-screen .eyebrow {
+  color: #64736f;
+}
+
+.review-screen > h1 {
+  color: #15231f;
+}
+
+.review-instruction {
+  color: #66746f;
+}
+
+.review-groups {
+  display: grid;
+  gap: 28px;
+}
+
+.review-group {
+  display: grid;
+  gap: 14px;
+}
+
+.review-group > h2 {
+  margin: 0;
+  color: #23332e;
+  font-size: .76rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.review-choice {
+  display: flex;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  padding: 24px 20px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(20, 45, 55, .08);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, .82);
+  box-shadow:
+    0 18px 45px rgba(19, 42, 51, .08),
+    inset 0 1px 0 rgba(255, 255, 255, .9);
+  text-align: center;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.review-photo {
+  width: 92px;
+  height: 92px;
+  margin: 0 0 14px;
+  border: 3px solid rgba(255, 255, 255, .9);
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 12px 28px rgba(20, 40, 48, .15);
+}
+
+.review-choice .candidate-details {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-choice .candidate-office {
+  margin-bottom: 5px;
+  color: #74827e;
+  font-size: .67rem;
+  font-weight: 750;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.review-choice .candidate-name {
+  color: #17211f;
+  font-size: 1.05rem;
+  font-weight: 850;
+  letter-spacing: -.02em;
+}
+
+.review-choice .candidate-number {
+  display: flex;
+  margin: 13px 0 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-choice .number-label {
+  margin-bottom: 2px;
+  color: #7b8985;
+  font-size: .6rem;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.review-choice .number-value {
+  color: #142b42;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .08em;
+}
+
+.review-choice .candidate-party {
+  color: #66746f;
+  font-size: .72rem;
+  font-weight: 650;
+}
+
+.review-choice .edit-choice {
+  min-height: 38px;
+  margin-top: 16px;
+  padding: 0 18px;
+  border: 1px solid rgba(20, 43, 66, .12);
+  border-radius: 999px;
+  background: #f3f7f8;
+  color: #142b42;
+  font-size: .72rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.review-choice .edit-choice:hover {
+  background: #e9f0f2;
+}
+
+.review-screen .selection-progress {
+  accent-color: #315d70;
+}
+
+@media (min-width: 760px) {
+  .review-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .review-group {
+    height: 100%;
+  }
+
+  .review-group:has(.review-choice + .review-choice) {
+    grid-column: span 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-group:has(.review-choice + .review-choice) > h2 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================================================
+   REVIEW V3 — acabamento claro / glass
+   ========================================================= */
+
+.review-screen {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: 38px 20px 70px;
+  color: #17211f;
+}
+
+/* Cria uma superfície clara apenas para a tela de revisão */
+body:has(.review-screen) {
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(85, 137, 157, 0.13),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 95% 70%,
+      rgba(95, 151, 137, 0.10),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #f7fafb 0%,
+      #eef4f5 48%,
+      #f8faf9 100%
+    );
+  color: #17211f;
+}
+
+/* Header também acompanha o tema claro nesta tela */
+body:has(.review-screen) .site-header {
+  border-color: rgba(20, 45, 55, 0.08);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 30px rgba(19, 42, 51, 0.05);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+body:has(.review-screen) .site-header .brand {
+  color: #172b42;
+}
+
+body:has(.review-screen) .development-label {
+  border-color: rgba(20, 45, 55, 0.12);
+  color: #53645f;
+}
+
+/* Introdução */
+
+.review-screen > .eyebrow {
+  margin-bottom: 8px;
+  color: #647772;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.review-screen > h1 {
+  margin: 0;
+  color: #142b42;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.review-instruction {
+  margin: 12px 0 26px;
+  color: #65756f;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Progresso */
+
+.review-screen .selection-progress {
+  width: 100%;
+  height: 6px;
+  margin: 20px 0 0;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #dce6e8;
+  accent-color: #315d70;
+}
+
+/* Os títulos externos eram redundantes.
+   O cargo já aparece dentro do próprio card. */
+
+.review-group > h2 {
+  display: none;
+}
+
+/* Grupos */
+
+.review-groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Card */
+
+.review-choice {
+  display: flex;
+  width: 100%;
+  min-height: 350px;
+  margin: 0;
+  padding: 28px 22px 24px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.68);
+
+  box-shadow:
+    0 20px 55px rgba(29, 53, 61, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  text-align: center;
+
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+
+/* Foto */
+
+.review-photo {
+  width: 96px;
+  height: 96px;
+  margin: 0 0 18px;
+
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+
+  object-fit: cover;
+
+  box-shadow:
+    0 13px 30px rgba(19, 42, 51, 0.15);
+}
+
+/* Conteúdo */
+
+.review-choice .candidate-details {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-choice .candidate-office {
+  margin-bottom: 7px;
+
+  color: #71827d;
+
+  font-size: 0.63rem;
+  font-weight: 850;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+}
+
+.review-choice .candidate-name {
+  color: #182522;
+
+  font-size: 1.03rem;
+  font-weight: 850;
+  letter-spacing: -0.025em;
+}
+
+/* Número */
+
+.review-choice .candidate-number {
+  display: flex;
+  margin: 17px 0 12px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-choice .number-label {
+  margin-bottom: 5px;
+
+  color: #899691;
+
+  font-size: 0.57rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.review-choice .number-value {
+  color: #142b42;
+
+  font-size: 2.15rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.13em;
+}
+
+/* Partido */
+
+.review-choice .candidate-party {
+  color: #687873;
+
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+/* Alterar */
+
+.review-choice .edit-choice {
+  min-width: 94px;
+  min-height: 40px;
+
+  margin-top: auto;
+  padding: 0 18px;
+
+  border: 1px solid rgba(20, 43, 66, 0.10);
+  border-radius: 999px;
+
+  background: rgba(239, 245, 246, 0.9);
+
+  color: #173047;
+
+  font-size: 0.7rem;
+  font-weight: 850;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.review-choice .edit-choice:hover {
+  background: #e6eff1;
+  box-shadow: 0 8px 20px rgba(20, 43, 66, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Ações inferiores */
+
+.review-screen .flow-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+
+  margin-top: 28px;
+}
+
+.review-screen .primary-action,
+.review-screen .secondary-action {
+  min-height: 50px;
+  border-radius: 16px;
+}
+
+.review-screen .primary-action {
+  border: 0;
+  background: #142b42;
+  color: #ffffff;
+}
+
+.review-screen .secondary-action {
+  border: 1px solid rgba(20, 43, 66, 0.11);
+  background: rgba(255, 255, 255, 0.7);
+  color: #142b42;
+}
+
+.review-screen .change-uf {
+  color: #526863;
+}
+
+/* Desktop */
+
+@media (min-width: 720px) {
+  .review-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .review-group {
+    display: contents;
+  }
+
+  .review-choice {
+    height: 100%;
+  }
+
+  .review-screen .flow-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Celular */
+
+@media (max-width: 719px) {
+  .review-screen {
+    padding: 28px 16px 56px;
+  }
+
+  .review-choice {
+    min-height: 330px;
+  }
+}
+
+/* =========================================================
+   REVIEW V4 — mantém identidade escura do aplicativo
+   ========================================================= */
+
+body:has(.review-screen) {
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(64, 118, 151, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 55%,
+      rgba(31, 128, 106, 0.12),
+      transparent 32%
+    ),
+    linear-gradient(
+      155deg,
+      #172b42 0%,
+      #101e33 42%,
+      #071321 100%
+    );
+  background-attachment: fixed;
+  color: #f8fbff;
+}
+
+/* Header volta ao tema escuro */
+
+body:has(.review-screen) .site-header {
+  border-color: rgba(255, 255, 255, 0.10);
+  background: rgba(11, 23, 40, 0.48);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+body:has(.review-screen) .site-header .brand {
+  color: #ffffff;
+}
+
+body:has(.review-screen) .development-label {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Cabeçalho da revisão */
+
+.review-screen > .eyebrow {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.review-screen > h1 {
+  color: #ffffff;
+}
+
+.review-instruction {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+/* Barra de progresso */
+
+.review-screen .selection-progress {
+  background: rgba(255, 255, 255, 0.10);
+  accent-color: #7fb8c9;
+}
+
+/* Mantém os cards claros para máxima legibilidade */
+
+.review-choice {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.88);
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Botões inferiores */
+
+.review-screen .primary-action {
+  background: #ffffff;
+  color: #142b42;
+}
+
+.review-screen .secondary-action {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.review-screen .change-uf {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+/* Título "Seu Santinho" — tela final */
+.completed-heading h1 {
+  color: #ffffff;
+}
+
+.completed-heading p {
+  color: rgba(255, 255, 255, 0.65);
+}
